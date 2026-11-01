@@ -1,14 +1,14 @@
 {
-  "name": "glance-web",
+  "name": "glassys-web",
   "private": true,
   "version": "0.3.1",
   "type": "module",
   "packageManager": "bun@1.3.13",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-    "dev:static": "VITE_GLANCE_STATIC_SCENE=/examples/LiFePO4.scene.json VITE_GLANCE_STATIC_SCENE_NAME='LiFePO4.cif' bun run dev",
+    "dev:static": "VITE_GLASSYS_STATIC_SCENE=/examples/LiFePO4.scene.json VITE_GLASSYS_STATIC_SCENE_NAME='LiFePO4.cif' bun run dev",
     "build": "tsc --noEmit && vite build",
-    "build:static": "VITE_GLANCE_STATIC_SCENE=/examples/LiFePO4.scene.json VITE_GLANCE_STATIC_SCENE_NAME='LiFePO4.cif' bun run build",
+    "build:static": "VITE_GLASSYS_STATIC_SCENE=/examples/LiFePO4.scene.json VITE_GLASSYS_STATIC_SCENE_NAME='LiFePO4.cif' bun run build",
     "preview": "vite preview --host 127.0.0.1",
     "test": "bun test",
     "test:watch": "bun test --watch",

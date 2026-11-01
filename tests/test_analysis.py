@@ -4,8 +4,8 @@ import numpy as np
 import pytest
 from pymatgen.core import Lattice, Structure
 
-from glance.analysis import kernels as K
-from glance.analysis.pipeline import compute_dynamics
+from glassys.analysis import kernels as K
+from glassys.analysis.pipeline import compute_dynamics
 
 
 def test_grouped_frame_arrays_reorders_interleaved_elements() -> None:

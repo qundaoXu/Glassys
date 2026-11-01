@@ -6,8 +6,8 @@ import numpy as np
 import pytest
 from pymatgen.core import Lattice, Structure
 
-import glance.electronic.ipr as ipr_module
-from glance.electronic.ipr import (
+import glassys.electronic.ipr as ipr_module
+from glassys.electronic.ipr import (
     IprReadError,
     aggregate_ipr_bands,
     compute_ipr,

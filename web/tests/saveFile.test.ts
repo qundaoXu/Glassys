@@ -80,7 +80,7 @@ describe("saveBlob on the desktop", () => {
     const [call] = invocations;
     expect(call!.cmd).toBe("save_export_file");
     expect(Array.from(call!.payload as Uint8Array)).toEqual([137, 80, 78, 71]);
-    expect(call!.options?.headers).toEqual({ "x-glance-file-name": "chart.png" });
+    expect(call!.options?.headers).toEqual({ "x-glassys-file-name": "chart.png" });
   });
 
   test("percent-encodes non-ASCII file names so they survive as a header value", async () => {
@@ -89,7 +89,7 @@ describe("saveBlob on the desktop", () => {
     await saveBlob(new Blob(["x"]), "结构 图.png");
 
     expect(invocations[0]!.options?.headers).toEqual({
-      "x-glance-file-name": "%E7%BB%93%E6%9E%84%20%E5%9B%BE.png",
+      "x-glassys-file-name": "%E7%BB%93%E6%9E%84%20%E5%9B%BE.png",
     });
   });
 

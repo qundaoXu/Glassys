@@ -1,6 +1,6 @@
 import { apiFetch } from "./runtime";
 import { STRUCTURE_ATOM_COUNT_THRESHOLD } from "../model/structureLimits";
-import sceneContract from "../../../src/glance/structures/scene_contract.json";
+import sceneContract from "../../../src/glassys/structures/scene_contract.json";
 
 export interface SceneSpec {
   cell: {
@@ -129,13 +129,13 @@ export class StructurePreviewError extends Error {
 }
 
 export const STATIC_SCENE_PREVIEW_URL =
-  import.meta.env.VITE_GLANCE_STATIC_SCENE ?? "";
+  import.meta.env.VITE_GLASSYS_STATIC_SCENE ?? "";
 export const STATIC_SCENE_PREVIEW_NAME =
-  import.meta.env.VITE_GLANCE_STATIC_SCENE_NAME ?? "Example structure";
+  import.meta.env.VITE_GLASSYS_STATIC_SCENE_NAME ?? "Example structure";
 
 export const BACKEND_UNAVAILABLE_TITLE = "Python backend is unavailable";
 export const BACKEND_UNAVAILABLE_MESSAGE =
-  "Start Glance locally to upload or recompute structures.";
+  "Start Glassys locally to upload or recompute structures.";
 
 export function hasStaticScenePreview(): boolean {
   return STATIC_SCENE_PREVIEW_URL.length > 0;
@@ -186,7 +186,7 @@ export async function uploadStructurePreview(
       method: "POST",
       headers: {
         "content-type": file.type || "application/octet-stream",
-        "x-glance-filename": encodeURIComponent(file.name),
+        "x-glassys-filename": encodeURIComponent(file.name),
       },
       body: file,
     });

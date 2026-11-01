@@ -1,9 +1,9 @@
 export function exportFileStem(fileName: string | null): string {
-  const sourceName = fileName?.trim() || "glance";
+  const sourceName = fileName?.trim() || "glassys";
   const stem = sourceName
     .replace(/\.[^./\\]+$/, "")
     .replace(/[^a-zA-Z0-9._-]+/g, "-")
     .replace(/^-+|-+$/g, "");
 
-  return stem || "glance";
+  return stem || "glassys";
 }

@@ -20,12 +20,12 @@ Two reference implementations were provided (`develop_map/reference_src/`):
   systems, but requires a Julia toolchain and the PyCall bridge at runtime.
 
 Both are heavyweight for a pip-installable, cross-platform local web app, and
-neither reuses the per-element bond cutoffs the rest of `glance.analysis`
+neither reuses the per-element bond cutoffs the rest of `glassys.analysis`
 already derives from g(r).
 
 ## Decision
 
-Reimplement ring statistics natively in `src/glance/analysis/rings.py` using
+Reimplement ring statistics natively in `src/glassys/analysis/rings.py` using
 pure NumPy and the standard library, on top of pymatgen's periodic neighbour
 search. No OVITO, no Julia, no new runtime dependency.
 

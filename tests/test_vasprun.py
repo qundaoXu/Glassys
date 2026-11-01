@@ -7,12 +7,12 @@ import pytest
 from httpx import ASGITransport, AsyncClient
 from pymatgen.core import Lattice, Structure
 
-import glance.electronic.ipr as ipr_module
-import glance.electronic.vasprun as vasprun_module
-import glance.server.routes as routes_module
-from glance.electronic.vasprun import aggregate_site_pdos, parse_vasprun
-from glance.server.app import create_app
-from glance.server.vasprun_store import VasprunStore
+import glassys.electronic.ipr as ipr_module
+import glassys.electronic.vasprun as vasprun_module
+import glassys.server.routes as routes_module
+from glassys.electronic.vasprun import aggregate_site_pdos, parse_vasprun
+from glassys.server.app import create_app
+from glassys.server.vasprun_store import VasprunStore
 
 
 class FakeDos:

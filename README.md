@@ -1,7 +1,7 @@
-<h1 align="center">Glance</h1>
+<h1 align="center">Glassys</h1>
 
 <p align="center">
-  Glance is a crystal visualization tool for creating beautiful, publication-ready figures.
+  Glassys is a crystal visualization tool for creating beautiful, publication-ready figures.
 </p>
 <p align="center">
   <a href="https://github.com/songfeitong/pretty-lattice/actions/workflows/ci.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/songfeitong/pretty-lattice/ci.yml?branch=main&label=CI&style=flat-square"></a>
@@ -26,7 +26,7 @@
 - **Customizable**: tune colors, radii, materials, opacity, orientation, and export settings
 
 <p align="center">
-  <img src="assets/demo.png" alt="Glance interface preview" width="90%">
+  <img src="assets/demo.png" alt="Glassys interface preview" width="90%">
 </p>
 
 
@@ -36,10 +36,10 @@ I always find it harder than it should be to make a good-looking crystal figure.
 
 Traditional crystallographic tools such as VESTA are powerful, but their visual defaults often feel outdated: harsh color palettes, low-quality 3D shading, and a lot of manual tweaking before the result looks acceptable. You could import the structure into professional 3D software such as Cinema 4D or Blender, but that feels like overkill and comes with a much steeper learning curve.
 
-Glance is my attempt to fill that gap. Built on [Three.js](https://github.com/mrdoob/three.js), it stays (relatively) lightweight without compromising visual quality. It offers a modern, intuitive interface with familiar controls researchers expect, and produces clean, aesthetically pleasing figures out of the box.
+Glassys is my attempt to fill that gap. Built on [Three.js](https://github.com/mrdoob/three.js), it stays (relatively) lightweight without compromising visual quality. It offers a modern, intuitive interface with familiar controls researchers expect, and produces clean, aesthetically pleasing figures out of the box.
 
 > [!NOTE]
-> By design, Glance focuses on **visualization**. It is not intended to replace mature materials-analysis tools such as VESTA and Materials Studio, and it does not try to provide complex structure editing or analysis workflows. Input files are treated as read-only. The intended workflow is to prepare and analyze structures with more specialized tools, then bring the final structure into Glance for viewing, styling, and export.
+> By design, Glassys focuses on **visualization**. It is not intended to replace mature materials-analysis tools such as VESTA and Materials Studio, and it does not try to provide complex structure editing or analysis workflows. Input files are treated as read-only. The intended workflow is to prepare and analyze structures with more specialized tools, then bring the final structure into Glassys for viewing, styling, and export.
 
 ## Install
 
@@ -52,13 +52,13 @@ Install the latest from this repository (the bundled frontend ships with the pac
 Node/bun build step is needed):
 
 ```shell
-pip install git+https://github.com/Xqd9912/glance.git
+pip install git+https://github.com/qundaoXu/Glassys.git
 ```
 
 Or with [uv](https://github.com/astral-sh/uv) as an isolated tool:
 
 ```shell
-uv tool install git+https://github.com/Xqd9912/glance.git
+uv tool install git+https://github.com/qundaoXu/Glassys.git
 ```
 
 The upstream release on PyPI (visualization core only) can still be installed with
@@ -75,22 +75,22 @@ Requirements:
 After installation, start the local GUI:
 
 ```shell
-glance gui
+glassys gui
 ```
 
-Glance starts a local server and opens your browser automatically.
+Glassys starts a local server and opens your browser automatically.
 
 Run once without installing:
 
 ```shell
-uvx --from git+https://github.com/Xqd9912/glance.git glance gui
+uvx --from git+https://github.com/qundaoXu/Glassys.git glassys gui
 ```
 
 Useful launch options:
 
 ```shell
-glance gui --no-open     # start the server without opening a browser
-glance gui -p 0          # choose any available port automatically
+glassys gui --no-open     # start the server without opening a browser
+glassys gui -p 0          # choose any available port automatically
 ```
 
 ## Examples
@@ -221,4 +221,4 @@ This fork extends it with:
 
 ## License
 
-Glance is released under the [MIT License](LICENSE), inherited from the upstream project.
+Glassys is released under the [MIT License](LICENSE), inherited from the upstream project.

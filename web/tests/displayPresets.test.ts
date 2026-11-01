@@ -83,7 +83,7 @@ describe("display presets", () => {
     const preset = createDisplayPreset("Stored", presetSnapshot());
     saveDisplayPresets([preset], storage);
     expect(loadDisplayPresets(storage).presets[0]?.name).toBe("Stored");
-    values.set("glance.display-presets.v1", "bad json");
+    values.set("glassys.display-presets.v1", "bad json");
     expect(loadDisplayPresets(storage)).toEqual({
       presets: [],
       error: "The preset file is not valid JSON.",

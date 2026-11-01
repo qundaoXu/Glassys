@@ -1,11 +1,11 @@
-"""Freeze the Glance API server for the desktop app.
+"""Freeze the Glassys API server for the desktop app.
 
 The desktop shell spawns the server as a child process. Users of the desktop app have no
 Python install, so the server is frozen with PyInstaller and shipped inside the app bundle.
 
     uv run --group desktop python scripts/build_sidecar.py
 
-The result lands in web/src-tauri/binaries/glance-server/, which is where tauri.conf.json
+The result lands in web/src-tauri/binaries/glassys-server/, which is where tauri.conf.json
 picks it up as an app resource. PyInstaller cannot cross-compile, so this has to run on
 each platform you intend to ship.
 """
@@ -19,19 +19,19 @@ import sys
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-SPEC_FILE = PROJECT_ROOT / "packaging" / "glance_server.spec"
+SPEC_FILE = PROJECT_ROOT / "packaging" / "glassys_server.spec"
 BUILD_ROOT = PROJECT_ROOT / "build" / "sidecar"
 DIST_ROOT = BUILD_ROOT / "dist"
-TARGET_DIR = PROJECT_ROOT / "web" / "src-tauri" / "binaries" / "glance-server"
+TARGET_DIR = PROJECT_ROOT / "web" / "src-tauri" / "binaries" / "glassys-server"
 
-EXECUTABLE_NAME = "glance-server.exe" if sys.platform == "win32" else "glance-server"
+EXECUTABLE_NAME = "glassys-server.exe" if sys.platform == "win32" else "glassys-server"
 
 
 def main() -> None:
     args = parse_args()
 
     run_pyinstaller(clean=args.clean)
-    frozen = DIST_ROOT / "glance-server"
+    frozen = DIST_ROOT / "glassys-server"
     verify_frozen(frozen)
     install(frozen)
 
@@ -97,7 +97,7 @@ def smoke_test(executable: Path) -> None:
     because PyInstaller missed a lazily imported module. Reaching the handshake means the
     whole import graph loaded inside the frozen environment.
     """
-    from glance.desktop import HANDSHAKE_PREFIX
+    from glassys.desktop import HANDSHAKE_PREFIX
 
     print("Smoke-testing the frozen server...", flush=True)
     process = subprocess.Popen(

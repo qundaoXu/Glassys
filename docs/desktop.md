@@ -1,7 +1,7 @@
 # Desktop App
 
-Glance also ships as a native desktop app, built with [Tauri](https://tauri.app).
-It is the same product as `glance gui`, packaged so that users do not need Python at all.
+Glassys also ships as a native desktop app, built with [Tauri](https://tauri.app).
+It is the same product as `glassys gui`, packaged so that users do not need Python at all.
 
 ## How it fits together
 
@@ -11,17 +11,17 @@ server and runs it as a child process, called a *sidecar*:
 
 ```mermaid
 flowchart LR
-    A[Tauri shell<br/>Rust] -->|1. spawn| B[glance-server<br/>frozen Python + FastAPI]
+    A[Tauri shell<br/>Rust] -->|1. spawn| B[glassys-server<br/>frozen Python + FastAPI]
     B -->|2. handshake:<br/>port + token| A
     A -->|3. inject address + token| C[Webview<br/>React + Three.js]
     C -->|4. HTTP| B
 ```
 
 1. The shell spawns the server. The server binds a free port, mints a one-off API token, and
-   prints both on one stdout line prefixed with `GLANCE_READY`.
+   prints both on one stdout line prefixed with `GLASSYS_READY`.
 2. The shell waits until that port accepts connections. A splash window covers the wait,
    which is a few seconds, mostly spent importing pymatgen.
-3. The shell creates the main window, injecting `window.__GLANCE_API__` before any
+3. The shell creates the main window, injecting `window.__GLASSYS_API__` before any
    application code runs.
 4. The page talks to the server over plain HTTP on localhost.
 
@@ -33,7 +33,7 @@ Three consequences worth knowing:
   which is a no-op in the browser and prefixes the real address in the desktop app.
 - **The API requires a token in the desktop app.** A local HTTP server is reachable by every
   other process on the machine; the per-launch token means only the app's own window can
-  drive it. `glance gui` passes no token, because there the page and the API share an origin.
+  drive it. `glassys gui` passes no token, because there the page and the API share an origin.
 - **The frontend cannot download files in the desktop app.** A webview is not a browser: with
   no download handler registered, WKWebView cancels an `<a download>` navigation outright and
   WebView2 drops the file into the download folder unannounced. Either way the user never
@@ -44,7 +44,7 @@ Three consequences worth knowing:
 
   The bytes travel as a raw IPC body rather than as a JSON argument, because exports reach
   tens of megabytes and a byte array in JSON costs about four times that. The file name rides
-  along in the `x-glance-file-name` header, percent-encoded so non-ASCII names survive.
+  along in the `x-glassys-file-name` header, percent-encoded so non-ASCII names survive.
 
 ## Prerequisites
 
@@ -64,7 +64,7 @@ bun run desktop:dev
 ```
 
 In a debug build the shell does **not** use the frozen server. It runs
-`uv run python -m glance.desktop` straight from the working tree, so changes to
+`uv run python -m glassys.desktop` straight from the working tree, so changes to
 Python code take effect on the next launch without re-freezing anything. You still need to
 have built the sidecar once, because the bundle configuration expects the directory to
 exist.
@@ -108,7 +108,7 @@ machine that did not build it; the user has to right-click and choose Open, or c
 quarantine attribute:
 
 ```bash
-xattr -cr "/Applications/Glance.app"
+xattr -cr "/Applications/Glassys.app"
 ```
 
 Shipping this to other people properly means an Apple Developer ID and notarization on

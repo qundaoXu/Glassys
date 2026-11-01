@@ -12,7 +12,7 @@
 import { invoke } from "@tauri-apps/api/core";
 
 /** Matches `FILE_NAME_HEADER` in the Tauri shell. */
-const FILE_NAME_HEADER = "x-glance-file-name";
+const FILE_NAME_HEADER = "x-glassys-file-name";
 
 const SAVE_COMMAND = "save_export_file";
 
