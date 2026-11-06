@@ -4,8 +4,8 @@
   Glassys is a crystal visualization tool for creating beautiful, publication-ready figures.
 </p>
 <p align="center">
-  <a href="https://github.com/songfeitong/pretty-lattice/actions/workflows/ci.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/songfeitong/pretty-lattice/ci.yml?branch=main&label=CI&style=flat-square"></a>
-  <a href="https://pypi.org/project/pretty-lattice/"><img alt="PyPI" src="https://img.shields.io/pypi/v/pretty-lattice?style=flat-square"></a>
+  <a href="https://github.com/qundaoXu/Glassys/actions/workflows/ci.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/qundaoXu/Glassys/ci.yml?branch=main&label=CI&style=flat-square"></a>
+  <a href="https://github.com/qundaoXu/Glassys/releases"><img alt="Latest release" src="https://img.shields.io/github/v/release/qundaoXu/Glassys?style=flat-square"></a>
   <img alt="Python 3.12+" src="https://img.shields.io/badge/python-3.12+-3776ab?style=flat-square">
   <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-green?style=flat-square">
 </p>

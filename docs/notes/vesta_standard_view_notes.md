@@ -175,7 +175,7 @@ z：垂直屏幕
 
 ---
 
-## 4. 给 pretty-lattice / 晶体渲染程序的建议
+## 4. 给 Glassys / 晶体渲染程序的建议
 
 我建议把两个概念明确分开：
 
@@ -265,7 +265,7 @@ R  = normalize(cross(U, D))
 最准确的产品定义可以写成：
 
 > **VESTA-compatible reset**：沿 c 看，b* 向上。  
-> **pretty-lattice standard view**：三分之四观察，直接 c 的屏幕投影向上。
+> **Glassys standard view**：三分之四观察，直接 c 的屏幕投影向上。
 
 也就是说：
 
@@ -274,7 +274,7 @@ VESTA reset:
     view_direction = c
     screen_up      = b*
 
-pretty-lattice standard:
+Glassys standard:
     view_direction = a + b + c
     screen_up      = projection of c onto screen
 ```

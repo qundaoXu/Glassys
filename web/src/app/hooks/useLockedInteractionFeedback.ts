@@ -10,7 +10,7 @@ import {
 import { ATOM_PICK_MAX_DELTA_PX } from "../../scene/atomPicking";
 
 const LOCKED_INTERACTION_WHEEL_IDLE_MS = 150;
-const REDISPATCHED_CONTEXT_MENU_EVENT = "__prettyLatticeRedispatchedContextMenu";
+const REDISPATCHED_CONTEXT_MENU_EVENT = "__glassysRedispatchedContextMenu";
 
 interface LockedInteractionPointer {
   pointerId: number;

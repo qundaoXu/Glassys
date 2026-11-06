@@ -1,5 +1,5 @@
 
-# Pymatgen 功能调研报告（用于 pretty-lattice 后端替代 ASE）
+# Pymatgen 功能调研报告（用于 Glassys 后端替代 ASE）
 
 ## 1. 概述
 

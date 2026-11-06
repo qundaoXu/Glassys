@@ -6,7 +6,7 @@ Accepted.
 
 ## Context
 
-Pretty Lattice is a local web GUI for publication-ready crystal-structure
+Glassys is a local web GUI for publication-ready crystal-structure
 figures. The Python backend owns structure IO, materials analysis, and scene
 generation; the Web frontend owns visual interaction and rendering.
 
@@ -25,7 +25,7 @@ The current backend needs a cleaner foundation for:
 
 Pymatgen's core model is `Structure` / `Lattice`, and its analysis modules
 cover symmetry, neighbor finding, structure graphs, and coordination
-environments. That matches Pretty Lattice's backend responsibilities more
+environments. That matches Glassys's backend responsibilities more
 directly than ASE.
 
 ## Decision
@@ -49,7 +49,7 @@ scene.
 
 - The backend model becomes more aligned with crystal visualization,
   symmetry, bond graphs, and future polyhedra work.
-- The dependency surface gets cleaner: Pretty Lattice depends on pymatgen
+- The dependency surface gets cleaner: Glassys depends on pymatgen
   directly, and pymatgen owns its lower-level symmetry dependency.
 - Tests should use local CIF fixtures as the primary parser and scene
   regression set.
