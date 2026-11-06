@@ -72,7 +72,7 @@ Crystal Toolkit 的 `structuregraph` renderable 先决定哪些 site/image 要�
    - edges 可以从 face indices 派生，用 `EdgesGeometry` 或 line segments。
    - 默认颜色沿用中心原子颜色；surface opacity、边线颜色和边线透明度属于前端 renderer style，可以先用固定值。
 
-## 对 pretty-lattice 的职责划分建议
+## 对 Glassys 的职责划分建议
 
 ### 后端的活
 

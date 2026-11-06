@@ -4,7 +4,7 @@
 
 Crystal Toolkit 不是一个纯后端库。它是 Materials Project 做的 **Python-first 材料科学 Web App 框架**：底层大量使用 pymatgen，上层用 Plotly Dash 把结构、相图、能带、XRD、局域环境等材料对象包装成可交互网页组件。
 
-对 Pretty Lattice 来说，更合适的策略是 **借鉴，不直接依赖**。我们应该继续直接依赖 pymatgen 做结构 IO 和材料分析，保留自己的 FastAPI + React + Three.js 场景协议；Crystal Toolkit 适合作为显示语义和边界情况的参考实现。
+对 Glassys 来说，更合适的策略是 **借鉴，不直接依赖**。我们应该继续直接依赖 pymatgen 做结构 IO 和材料分析，保留自己的 FastAPI + React + Three.js 场景协议；Crystal Toolkit 适合作为显示语义和边界情况的参考实现。
 
 ## 调研范围
 
@@ -65,9 +65,9 @@ Crystal Toolkit = pymatgen-aware 的 Dash UI 框架和 scene generator
 
 它不是 pymatgen 的替代品，而是大量使用 pymatgen。它也不是我们现在这种 React 前端库；它的 web 边界是 Dash 加 Materials Project 自己维护的 Dash/React 组件。
 
-## 和 Pretty Lattice 的关系
+## 和 Glassys 的关系
 
-Pretty Lattice 当前方向是：
+Glassys 当前方向是：
 
 ```text
 Python backend: structure IO, materials analysis, scene generation
@@ -75,7 +75,7 @@ Web frontend: React + Three.js rendering and interaction
 Local app shell: FastAPI / Uvicorn served through `prl gui`
 ```
 
-Crystal Toolkit 会跨过这个边界。它希望 Python/Dash 直接负责页面结构、控件状态、callbacks 和很多 web 交互。而 Pretty Lattice 已经把 web 体验放在 React + React Three Fiber 里，并且保留项目自有的 `SceneSpec`。
+Crystal Toolkit 会跨过这个边界。它希望 Python/Dash 直接负责页面结构、控件状态、callbacks 和很多 web 交互。而 Glassys 已经把 web 体验放在 React + React Three Fiber 里，并且保留项目自有的 `SceneSpec`。
 
 直接依赖 Crystal Toolkit 会带来比较大的架构牵引：我们会被拉向 Dash、`dash-mp-components`、它自己的 component/state/callback 模型。依赖面也偏重，包括 `dash`、`dash-mp-components`、`flask-caching`、`mp-api`、`scikit-image`、`scikit-learn`、`shapely`、`webcolors`、`ipython`，还有一堆 optional server / Jupyter / VTK / phonon / fermi 依赖。
 
@@ -96,7 +96,7 @@ Crystal Toolkit 会跨过这个边界。它希望 Python/Dash 直接负责页面
 
 不建议直接采用：
 
-- Dash 作为 Pretty Lattice app 框架；
+- Dash 作为 Glassys app 框架；
 - `StructureMoleculeComponent` 作为我们的 viewer；
 - 直接把 Crystal Toolkit scene JSON 当成长期前后端协议；
 - 在核心后端里依赖它 monkey-patch 出来的 `get_scene()` 方法；
@@ -105,13 +105,13 @@ Crystal Toolkit 会跨过这个边界。它希望 Python/Dash 直接负责页面
 比较干净的路线是：
 
 ```text
-Pretty Lattice -> pymatgen directly -> project-owned SceneSpec -> React Three Fiber
+Glassys -> pymatgen directly -> project-owned SceneSpec -> React Three Fiber
 Crystal Toolkit -> reference for display recipes and edge cases
 ```
 
 ## 什么情况下可以重新考虑直接依赖
 
-如果 Pretty Lattice 以后改方向，变成一个“尽量不写 JS、全 Python/Dash 搭界面”的材料 dashboard，那 Crystal Toolkit 会很有吸引力。
+如果 Glassys 以后改方向，变成一个“尽量不写 JS、全 Python/Dash 搭界面”的材料 dashboard，那 Crystal Toolkit 会很有吸引力。
 
 如果只是做一个内部对照 demo，也可以单独依赖它快速试验。
 

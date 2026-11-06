@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "glance"
+name = "glassys"
 version = "0.3.1"
 description = "Local web GUI for rendering crystal structures as publication-ready figures."
 readme = "README.md"
@@ -23,7 +23,7 @@ dependencies = [
 ]
 
 [project.scripts]
-glance = "glance.cli:app"
+glassys = "glassys.cli:app"
 
 [dependency-groups]
 dev = [

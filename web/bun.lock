@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "glance-web",
+      "name": "glassys-web",
       "dependencies": {
         "@fontsource/geist": "^5.2.9",
         "@fontsource/geist-mono": "^5.2.8",

@@ -194,7 +194,7 @@ async function uploadFile<T>(
       method: "POST",
       headers: {
         "content-type": file.type || "application/octet-stream",
-        "x-glance-filename": encodeURIComponent(file.name),
+        "x-glassys-filename": encodeURIComponent(file.name),
       },
       body: file,
       signal,

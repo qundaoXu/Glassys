@@ -1,4 +1,4 @@
-# Glance Docs
+# Glassys Docs
 
 Project context lives in this directory. 
 

@@ -5,8 +5,8 @@ import math
 import numpy as np
 from pymatgen.core import Lattice, Structure
 
-from glance.analysis import pipeline as analysis_pipeline
-from glance.analysis import rings as R
+from glassys.analysis import pipeline as analysis_pipeline
+from glassys.analysis import rings as R
 
 
 def _cutoff(symbols: list[str], distance: float) -> np.ndarray:

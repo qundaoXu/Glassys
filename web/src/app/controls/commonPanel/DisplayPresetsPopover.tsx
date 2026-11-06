@@ -67,7 +67,7 @@ export function DisplayPresetsPopover({
     const url = URL.createObjectURL(blob);
     const anchor = document.createElement("a");
     anchor.href = url;
-    anchor.download = "glance-display-presets.json";
+    anchor.download = "glassys-display-presets.json";
     anchor.click();
     URL.revokeObjectURL(url);
   }

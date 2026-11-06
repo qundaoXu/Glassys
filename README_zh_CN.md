@@ -1,11 +1,11 @@
-<h1 align="center">Glance</h1>
+<h1 align="center">Glassys</h1>
 
 <p align="center">
-  Glance 是一个晶体结构可视化工具，用来快速做出美观、适合发表的结构图。
+  Glassys 是一个晶体结构可视化工具，用来快速做出美观、适合发表的结构图。
 </p>
 <p align="center">
-  <a href="https://github.com/songfeitong/pretty-lattice/actions/workflows/ci.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/songfeitong/pretty-lattice/ci.yml?branch=main&label=CI&style=flat-square"></a>
-  <a href="https://pypi.org/project/pretty-lattice/"><img alt="PyPI" src="https://img.shields.io/pypi/v/pretty-lattice?style=flat-square"></a>
+  <a href="https://github.com/qundaoXu/Glassys/actions/workflows/ci.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/qundaoXu/Glassys/ci.yml?branch=main&label=CI&style=flat-square"></a>
+  <a href="https://github.com/qundaoXu/Glassys/releases"><img alt="Latest release" src="https://img.shields.io/github/v/release/qundaoXu/Glassys?style=flat-square"></a>
   <img alt="Python 3.12+" src="https://img.shields.io/badge/python-3.12+-3776ab?style=flat-square">
   <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-green?style=flat-square">
 </p>
@@ -26,20 +26,20 @@
 - **灵活**：颜色、半径、材质、透明度、视角和导出参数都可以按需要修改
 
 <p align="center">
-  <img src="assets/demo.png" alt="Glance interface preview" width="90%">
+  <img src="assets/demo.png" alt="Glassys interface preview" width="90%">
 </p>
 
 
-## 为什么做 Glance
+## 为什么做 Glassys
 
 我一直觉得想画出一张好看的晶体结构图很难。
 
 传统的晶体学工具（比如 VESTA）功能确实强大，但默认的视觉效果总让人觉得过时。辣眼睛的配色、粗糙的3D效果，往往得花大量时间手动调整，画面才算勉强能看。当然，另一种选择是把结构导入像 Cinema 4D 或 Blender 这类专业 3D 软件里渲染，可那样又显得大炮打蚊子，而且学习曲线要陡峭得多。
 
-Glance 就是我为弥补二者之间的空白空缺所做的尝试。它基于 Three.js 构建，在相对轻量的同时保证高质量的画面。它提供了一个现代直观的用户界面，以及研究者熟悉的操作方式，开箱即用，直出干净又美观的晶体图。
+Glassys 就是我为弥补二者之间的空白空缺所做的尝试。它基于 Three.js 构建，在相对轻量的同时保证高质量的画面。它提供了一个现代直观的用户界面，以及研究者熟悉的操作方式，开箱即用，直出干净又美观的晶体图。
 
 > [!NOTE]
-> 从设计的初衷开始，Glance 就专注于**可视化**。它并不打算取代 VESTA、Materials Studio 这类成熟的材料分析工具，也不打算提供复杂的结构编辑或分析流程。打开的结构文件会被当作只读文件来处理。更推荐的工作方式是先用更专业的工具准备和分析结构，再把最终结构导入 Glance 里查看、调整样式并导出图片。
+> 从设计的初衷开始，Glassys 就专注于**可视化**。它并不打算取代 VESTA、Materials Studio 这类成熟的材料分析工具，也不打算提供复杂的结构编辑或分析流程。打开的结构文件会被当作只读文件来处理。更推荐的工作方式是先用更专业的工具准备和分析结构，再把最终结构导入 Glassys 里查看、调整样式并导出图片。
 
 ## 安装
 
@@ -50,13 +50,13 @@ Glance 就是我为弥补二者之间的空白空缺所做的尝试。它基于 
 从本仓库安装最新版（打包时已内置构建好的前端，无需 Node/bun 构建步骤）：
 
 ```shell
-pip install git+https://github.com/Xqd9912/glance.git
+pip install git+https://github.com/qundaoXu/Glassys.git
 ```
 
 或用 [uv](https://github.com/astral-sh/uv) 作为独立工具安装：
 
 ```shell
-uv tool install git+https://github.com/Xqd9912/glance.git
+uv tool install git+https://github.com/qundaoXu/Glassys.git
 ```
 
 上游的 PyPI 发布版（仅含可视化核心）仍可用 `pip install pretty-lattice` /
@@ -73,22 +73,22 @@ uv tool install git+https://github.com/Xqd9912/glance.git
 安装后，启动本地图形界面：
 
 ```shell
-glance gui
+glassys gui
 ```
 
-Glance 会启动一个本地服务，并自动打开浏览器。
+Glassys 会启动一个本地服务，并自动打开浏览器。
 
 也可以不安装，临时运行：
 
 ```shell
-uvx --from git+https://github.com/Xqd9912/glance.git glance gui
+uvx --from git+https://github.com/qundaoXu/Glassys.git glassys gui
 ```
 
 常用启动选项：
 
 ```shell
-glance gui --no-open     # 只启动服务，不自动打开浏览器
-glance gui -p 0          # 自动选择可用端口
+glassys gui --no-open     # 只启动服务，不自动打开浏览器
+glassys gui -p 0          # 自动选择可用端口
 ```
 
 ## 示例
@@ -202,4 +202,4 @@ Viridis、Plasma、Cividis、Coolwarm 色标；测量几何与标量图例会进
 
 ## 许可证
 
-Glance 使用 [MIT License](LICENSE) 发布(继承自上游项目)。
+Glassys 使用 [MIT License](LICENSE) 发布(继承自上游项目)。

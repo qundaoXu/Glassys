@@ -5,15 +5,15 @@
 Run the local GUI server:
 
 ```bash
-uv run glance gui
+uv run glassys gui
 ```
 
 Useful development options:
 
 ```bash
-uv run glance gui --no-open
-uv run glance gui --reload
-uv run glance gui -p 0
+uv run glassys gui --no-open
+uv run glassys gui --reload
+uv run glassys gui -p 0
 ```
 
 Run checks:
@@ -51,9 +51,9 @@ bun run build
 For now, run the Python server and Vite server separately:
 
 ```bash
-uv run glance gui --no-open
+uv run glassys gui --no-open
 cd web && bun run dev
 ```
 
 Open the Vite URL in the browser. The production packaging path will later build `web/dist`
-and copy it into `src/glance/web_static/` so normal users only need the Python package.
+and copy it into `src/glassys/web_static/` so normal users only need the Python package.

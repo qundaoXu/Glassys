@@ -2,7 +2,7 @@
 
 ## Product Definition
 
-Glance is a **local web GUI tool** for interactive preview and rendering crystal structures as pretty, publication-ready figures.
+Glassys is a **local web GUI tool** for interactive preview and rendering crystal structures as pretty, publication-ready figures.
 
 The workflow is simple:
 
@@ -31,17 +31,17 @@ So I decided to build a lightweight tool based on modern web tech (Three.js), th
 
 ## Release Shape
 
-Glance ships in two shapes. Both run the same Python backend and the same web
+Glassys ships in two shapes. Both run the same Python backend and the same web
 frontend; they differ only in what the user has to install and where the UI is drawn.
 
-**Python package.** Users install `glance` and run `glance gui`. This starts a local
+**Python package.** Users install `glassys` and run `glassys gui`. This starts a local
 Python server and opens a browser page, which runs the bundled web app.
 
 ```mermaid
 flowchart LR
     A[Web source<br/>Bun + React + Three.js] --> B[Build static web assets]
     B --> C[Bundle assets into Python package]
-    D[User installs glance] --> E[glance gui]
+    D[User installs glassys] --> E[glassys gui]
     E --> F[Local browser GUI]
 ```
 
@@ -53,18 +53,18 @@ draws the UI in a native window. See [Desktop App](desktop.md).
 flowchart LR
     G[Freeze Python server<br/>PyInstaller] --> H[Bundle into Tauri app]
     A --> H
-    I[User installs Glance.app] --> J[Native window + local API]
+    I[User installs Glassys.app] --> J[Native window + local API]
 ```
 
 Users should **not need JS developer tools** (Node, Bun, pnpm, Vite, etc.). Users of the
 desktop app should not need **Python** either.
 
-The desktop app is an additional shape, not a replacement: the `pip install` + `glance gui`
+The desktop app is an additional shape, not a replacement: the `pip install` + `glassys gui`
 path stays supported, and no change should break it.
 
 ## Tech Stack
 
-Glance keeps a clear backend/frontend boundary. The Python backend owns structure IO, materials analysis, and scene generation. The Web frontend owns visual interaction and rendering. The browser may use lattice-derived scene data for camera and view controls, but crystallographic or materials-analysis decisions should stay in Python unless they are purely presentational.
+Glassys keeps a clear backend/frontend boundary. The Python backend owns structure IO, materials analysis, and scene generation. The Web frontend owns visual interaction and rendering. The browser may use lattice-derived scene data for camera and view controls, but crystallographic or materials-analysis decisions should stay in Python unless they are purely presentational.
 
 ### Backend: Python
 

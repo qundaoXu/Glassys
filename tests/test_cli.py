@@ -5,8 +5,8 @@ import socket
 import typer.main
 from typer.testing import CliRunner
 
-import glance.cli as cli
-from glance.cli import _choose_port, _wait_for_server
+import glassys.cli as cli
+from glassys.cli import _choose_port, _wait_for_server
 
 runner = CliRunner()
 
@@ -35,8 +35,8 @@ def test_help_accepts_short_option() -> None:
 
     assert root_result.exit_code == 0
     assert gui_result.exit_code == 0
-    assert "Glance command line tools." in root_result.output
-    assert "Start the local Glance GUI server." in gui_result.output
+    assert "Glassys command line tools." in root_result.output
+    assert "Start the local Glassys GUI server." in gui_result.output
 
 
 def test_wait_for_server_accepts_ready_port() -> None:

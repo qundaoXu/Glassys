@@ -6,8 +6,8 @@ import numpy as np
 import pytest
 from httpx import ASGITransport, AsyncClient
 
-import glance.server.routes as routes_module
-from glance.electronic.chgcar import (
+import glassys.server.routes as routes_module
+from glassys.electronic.chgcar import (
     ChgcarReadError,
     atom_neighbors,
     isosurface,
@@ -18,13 +18,13 @@ from glance.electronic.chgcar import (
     slice_plane,
     value_histogram,
 )
-from glance.electronic.dos import parse_tdos
-from glance.electronic.lobster import (
+from glassys.electronic.dos import parse_tdos
+from glassys.electronic.lobster import (
     LobsterReadError,
     parse_bwdf,
     parse_pair_list,
 )
-from glance.server.app import create_app
+from glassys.server.app import create_app
 
 TEST_STRU = Path(__file__).resolve().parent.parent / "test_stru"
 TEST_DATA = Path(__file__).resolve().parent.parent / "test_data"

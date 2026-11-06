@@ -1,13 +1,13 @@
 # Naumann-Style Standard View Algorithm
 
-This note describes the default "standard view" used by Pretty Lattice for the
+This note describes the default "standard view" used by Glassys for the
 main crystal preview. The goal is to keep the view reproducible and easy to
 explain, while avoiding a cubic-only interpretation of the traditional
 clinographic drawing convention.
 
 ## Summary
 
-Pretty Lattice uses a Naumann-style clinographic view as its default crystal
+Glassys uses a Naumann-style clinographic view as its default crystal
 orientation:
 
 - the direct `c` axis is treated as the vertical crystal reference;
@@ -104,7 +104,7 @@ The result is not the same as "rotate by `18deg 26'` in the basal plane and
 then tilt upward." It is a different view that happens to share the same three
 numbers.
 
-Pretty Lattice therefore treats `[6 2 1]` as a cubic consequence, not as the
+Glassys therefore treats `[6 2 1]` as a cubic consequence, not as the
 general algorithm.
 
 ## Standard View Construction
@@ -338,7 +338,7 @@ The main regression tests are:
 
 The user-facing rule can be stated simply:
 
-Pretty Lattice looks at the crystal from the traditional clinographic direction
+Glassys looks at the crystal from the traditional clinographic direction
 and keeps the direct `c` axis visually upward. In cubic cells this is the same
 as a `[6 2 1]` view. In other crystal systems, the same viewing angles are
 applied in a local drawing frame, so the view remains comparable across

@@ -98,6 +98,11 @@ mock.module("@react-three/fiber", () => ({
         </div>
       );
     })(),
+  // Bun keeps module mocks across test files, so a later file importing
+  // exportRenderer still links against this mock. It needs the export to exist.
+  createRoot: () => {
+    throw new Error("createRoot is not implemented by this mock");
+  },
   useFrame: (callback: () => void) => {
     latestFrameCallback = callback;
   },

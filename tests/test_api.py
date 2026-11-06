@@ -5,8 +5,8 @@ from urllib.parse import quote
 import pytest
 from httpx import ASGITransport, AsyncClient
 
-import glance.structures.connectivity as connectivity_module
-from glance.server.app import create_app
+import glassys.structures.connectivity as connectivity_module
+from glassys.server.app import create_app
 
 FIXTURE_DIR = Path(__file__).parent / "fixtures" / "structures"
 
@@ -32,7 +32,7 @@ async def test_structure_preview_upload_endpoint_returns_scene() -> None:
         response = await client.post(
             "/api/structure-preview",
             content=payload,
-            headers={"x-glance-filename": "SrTiO3.cif"},
+            headers={"x-glassys-filename": "SrTiO3.cif"},
         )
         payload = response.json()
 
@@ -93,7 +93,7 @@ async def test_structure_preview_upload_endpoint_accepts_supported_bond_algorith
         response = await client.post(
             "/api/structure-preview?bondAlgorithm=minimum-distance",
             content=payload,
-            headers={"x-glance-filename": "SrTiO3.cif"},
+            headers={"x-glassys-filename": "SrTiO3.cif"},
         )
 
     assert response.status_code == 200
@@ -111,7 +111,7 @@ async def test_structure_preview_upload_endpoint_accepts_cutoff_dict_bond_algori
         response = await client.post(
             "/api/structure-preview?bondAlgorithm=cut-off-dict",
             content=payload,
-            headers={"x-glance-filename": "SrTiO3.cif"},
+            headers={"x-glassys-filename": "SrTiO3.cif"},
         )
 
     assert response.status_code == 200
@@ -129,7 +129,7 @@ async def test_structure_preview_upload_endpoint_rejects_unsupported_bond_algori
         response = await client.post(
             "/api/structure-preview?bondAlgorithm=voronoi-nn",
             content=payload,
-            headers={"x-glance-filename": "SrTiO3.cif"},
+            headers={"x-glassys-filename": "SrTiO3.cif"},
         )
 
     assert response.status_code == 400
@@ -147,7 +147,7 @@ async def test_structure_preview_upload_endpoint_accepts_custom_cutoffs() -> Non
         response = await client.post(
             f"/api/structure-preview?bondAlgorithm=custom-cutoff&cutoffs={quote(cutoffs)}",
             content=payload,
-            headers={"x-glance-filename": "SrTiO3.cif"},
+            headers={"x-glassys-filename": "SrTiO3.cif"},
         )
 
     body = response.json()
@@ -174,7 +174,7 @@ async def test_structure_preview_upload_endpoint_rejects_invalid_cutoffs() -> No
         response = await client.post(
             "/api/structure-preview?bondAlgorithm=custom-cutoff&cutoffs=not-json",
             content=payload,
-            headers={"x-glance-filename": "SrTiO3.cif"},
+            headers={"x-glassys-filename": "SrTiO3.cif"},
         )
 
     assert response.status_code == 400
@@ -196,7 +196,7 @@ async def test_structure_preview_upload_endpoint_returns_bond_warning(monkeypatc
         response = await client.post(
             "/api/structure-preview",
             content=payload,
-            headers={"x-glance-filename": "SrTiO3.cif"},
+            headers={"x-glassys-filename": "SrTiO3.cif"},
         )
 
     payload = response.json()
@@ -234,7 +234,7 @@ async def test_structure_preview_upload_endpoint_returns_parse_error() -> None:
         response = await client.post(
             "/api/structure-preview",
             content=b"not a structure",
-            headers={"x-glance-filename": "bad.cif"},
+            headers={"x-glassys-filename": "bad.cif"},
         )
 
         assert response.status_code == 400
@@ -249,7 +249,7 @@ async def test_structure_preview_upload_endpoint_rejects_oversized_payload() -> 
         response = await client.post(
             "/api/structure-preview",
             content=b"x" * (1 * 1024 * 1024 + 1),
-            headers={"x-glance-filename": "movie.mp4"},
+            headers={"x-glassys-filename": "movie.mp4"},
         )
 
         assert response.status_code == 413
@@ -259,8 +259,8 @@ async def test_structure_preview_upload_endpoint_rejects_oversized_payload() -> 
 @pytest.mark.anyio
 async def test_static_index_is_served_from_explicit_static_root(tmp_path) -> None:
     (tmp_path / "assets").mkdir()
-    (tmp_path / "index.html").write_text("<!doctype html><title>Glance</title>")
-    (tmp_path / "favicon.svg").write_text("<svg><title>Glance logo</title></svg>")
+    (tmp_path / "index.html").write_text("<!doctype html><title>Glassys</title>")
+    (tmp_path / "favicon.svg").write_text("<svg><title>Glassys logo</title></svg>")
 
     async with AsyncClient(
         transport=ASGITransport(app=create_app(static_root=tmp_path, dev_static_fallback=False)),
@@ -272,21 +272,21 @@ async def test_static_index_is_served_from_explicit_static_root(tmp_path) -> Non
         missing_ico_response = await client.get("/favicon.ico")
 
         assert response.status_code == 200
-        assert "Glance" in response.text
+        assert "Glassys" in response.text
         assert fallback_response.status_code == 200
-        assert "Glance" in fallback_response.text
+        assert "Glassys" in fallback_response.text
         assert favicon_response.status_code == 200
-        assert "Glance logo" in favicon_response.text
+        assert "Glassys logo" in favicon_response.text
         assert "image/svg+xml" in favicon_response.headers["content-type"]
         assert missing_ico_response.status_code == 404
 
 
 @pytest.mark.anyio
 async def test_missing_static_root_returns_actionable_page(tmp_path, monkeypatch) -> None:
-    # The built frontend is committed at glance/web_static, so the packaged-resource
+    # The built frontend is committed at glassys/web_static, so the packaged-resource
     # candidate always resolves. Point that lookup at an empty directory too, so the
     # "frontend is not built" path can actually be exercised.
-    monkeypatch.setattr("glance.server.app.resources.files", lambda _package: tmp_path)
+    monkeypatch.setattr("glassys.server.app.resources.files", lambda _package: tmp_path)
     async with AsyncClient(
         transport=ASGITransport(app=create_app(static_root=tmp_path, dev_static_fallback=False)),
         base_url="http://testserver",

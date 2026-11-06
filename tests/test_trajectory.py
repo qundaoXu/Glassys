@@ -8,20 +8,20 @@ import pytest
 from httpx import ASGITransport, AsyncClient
 from pymatgen.core import Lattice, Structure
 
-from glance.server.app import create_app
-from glance.server.trajectory_store import (
+from glassys.server.app import create_app
+from glassys.server.trajectory_store import (
     PROPERTY_CACHE_CAPACITY,
     TrajectoryEntry,
     TrajectoryStore,
 )
-from glance.structures.atom_properties import (
+from glassys.structures.atom_properties import (
     PROPERTY_BOND_MEAN,
     PROPERTY_COORDINATION,
     PROPERTY_DISPLACEMENT,
     scene_atom_properties,
     unwrap_trajectory_displacements,
 )
-from glance.structures.trajectory import (
+from glassys.structures.trajectory import (
     TrajectoryReadError,
     detect_trajectory_format,
     read_trajectory_bytes,
@@ -160,7 +160,7 @@ async def test_trajectory_upload_and_frame_endpoints() -> None:
         upload = await client.post(
             "/api/trajectory",
             content=XDATCAR_BYTES,
-            headers={"x-glance-filename": "XDATCAR"},
+            headers={"x-glassys-filename": "XDATCAR"},
         )
         meta = upload.json()
 
@@ -186,7 +186,7 @@ async def test_trajectory_dump_type_map_update() -> None:
         upload = await client.post(
             "/api/trajectory",
             content=DUMP_BYTES,
-            headers={"x-glance-filename": "run.dump"},
+            headers={"x-glassys-filename": "run.dump"},
         )
         meta = upload.json()
 
@@ -210,7 +210,7 @@ async def test_trajectory_frame_out_of_range_and_missing_trajectory() -> None:
         upload = await client.post(
             "/api/trajectory",
             content=XDATCAR_BYTES,
-            headers={"x-glance-filename": "XDATCAR"},
+            headers={"x-glassys-filename": "XDATCAR"},
         )
         trajectory_id = upload.json()["trajectoryId"]
 
@@ -229,7 +229,7 @@ async def test_trajectory_rejects_invalid_type_map() -> None:
         response = await client.post(
             "/api/trajectory?typeMap=not-json",
             content=DUMP_BYTES,
-            headers={"x-glance-filename": "run.dump"},
+            headers={"x-glassys-filename": "run.dump"},
         )
 
         assert response.status_code == 400
@@ -306,7 +306,7 @@ async def test_trajectory_atom_properties_endpoint_has_stable_domain() -> None:
         upload = await client.post(
             "/api/trajectory",
             content=XDATCAR_BYTES,
-            headers={"x-glance-filename": "XDATCAR"},
+            headers={"x-glassys-filename": "XDATCAR"},
         )
         trajectory_id = upload.json()["trajectoryId"]
         response = await client.get(

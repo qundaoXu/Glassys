@@ -395,8 +395,8 @@ wheels = [
 ]
 
 [[package]]
-name = "glance"
-version = "0.3.0"
+name = "glassys"
+version = "0.3.1"
 source = { editable = "." }
 dependencies = [
     { name = "ase" },

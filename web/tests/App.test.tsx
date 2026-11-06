@@ -273,7 +273,7 @@ describe("App", () => {
     expect(screen.queryByRole("button", { name: "Sidebar" })).toBeNull();
 
     const structureCard = screen.getByRole("complementary", { name: "Current structure" });
-    expect(within(structureCard).getByText("Glance").isConnected).toBe(true);
+    expect(within(structureCard).getByText("Glassys").isConnected).toBe(true);
     const openButton = within(structureCard).getByRole("button", { name: "Open structure" });
     expect(openButton.isConnected).toBe(true);
     expect((openButton as HTMLButtonElement).disabled).toBe(false);
@@ -299,7 +299,7 @@ describe("App", () => {
     expect(uploadRequest.init?.method).toBe("POST");
     expect(uploadRequest.init?.headers).toEqual({
       "content-type": "chemical/x-cif",
-      "x-glance-filename": "NaCl.cif",
+      "x-glassys-filename": "NaCl.cif",
     });
 
     expect((await screen.findByTestId("lattice-canvas")).isConnected).toBe(true);
@@ -2582,7 +2582,7 @@ describe("App", () => {
     const alert = await screen.findByRole("alert");
     expect(alert.textContent).toContain("Python backend is unavailable");
     expect(alert.textContent).toContain(
-      "Start Glance locally to upload or recompute structures.",
+      "Start Glassys locally to upload or recompute structures.",
     );
     expect(alert.textContent).not.toContain("Backend is unavailable.");
     expect(alert.textContent).not.toContain("Unsupported file");
@@ -2604,7 +2604,7 @@ describe("App", () => {
     const alert = await screen.findByRole("alert");
     expect(alert.textContent).toContain("Python backend is unavailable");
     expect(alert.textContent).toContain(
-      "Start Glance locally to upload or recompute structures.",
+      "Start Glassys locally to upload or recompute structures.",
     );
     expect(alert.textContent).not.toContain("Backend is unavailable.");
     expect(alert.textContent).not.toContain("pymatgen could not parse this file.");

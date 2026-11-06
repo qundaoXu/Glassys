@@ -11,7 +11,9 @@ import { COLOR_SCHEMES } from "./colorSchemes";
 import { MATERIAL_PRESET_CATALOG } from "./materialPresets";
 
 export const DISPLAY_PRESET_SCHEMA_VERSION = 1;
-export const DISPLAY_PRESET_STORAGE_KEY = "glance.display-presets.v1";
+export const DISPLAY_PRESET_STORAGE_KEY = "glassys.display-presets.v1";
+// Key used before the Glance → Glassys rename; read as a fallback so saved presets survive.
+const LEGACY_DISPLAY_PRESET_STORAGE_KEY = "glance.display-presets.v1";
 
 export interface DisplayPresetSnapshot {
   componentOpacity: ComponentOpacityState;
@@ -74,7 +76,9 @@ export function loadDisplayPresets(storage: Pick<Storage, "getItem"> = localStor
   presets: DisplayPreset[];
   error: string | null;
 } {
-  const stored = storage.getItem(DISPLAY_PRESET_STORAGE_KEY);
+  const stored =
+    storage.getItem(DISPLAY_PRESET_STORAGE_KEY) ??
+    storage.getItem(LEGACY_DISPLAY_PRESET_STORAGE_KEY);
   if (!stored) {
     return { presets: [], error: null };
   }

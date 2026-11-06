@@ -37,7 +37,7 @@ light, and the React UI follows it instead of driving every tiny input event.
 
 ## Context
 
-Pretty Lattice uses React for application UI and React Three Fiber / Three.js
+Glassys uses React for application UI and React Three Fiber / Three.js
 for the crystal preview. The preview can contain many renderable objects, so
 high-frequency input should avoid unnecessary React work.
 

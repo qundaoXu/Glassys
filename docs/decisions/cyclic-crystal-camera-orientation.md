@@ -25,7 +25,7 @@ b -> outward  means  c projects right
 c -> outward  means  a projects right
 ```
 
-Pretty Lattice should use this as the default roll convention, and extend it to
+Glassys should use this as the default roll convention, and extend it to
 arbitrary direct-lattice view directions.
 
 ## Decision

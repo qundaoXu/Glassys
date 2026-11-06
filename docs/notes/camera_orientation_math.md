@@ -1,6 +1,6 @@
 # Camera Orientation Math
 
-Pretty Lattice follows the VESTA-style split between one direct-lattice direction
+Glassys follows the VESTA-style split between one direct-lattice direction
 and one reciprocal-lattice direction. Let
 
 $$

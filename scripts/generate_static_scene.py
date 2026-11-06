@@ -3,8 +3,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from glance.structures.readers import read_structure
-from glance.structures.scene import build_scene_response
+from glassys.structures.readers import read_structure
+from glassys.structures.scene import build_scene_response
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 INPUT_PATH = PROJECT_ROOT / "tests" / "fixtures" / "structures" / "Al2O3.cif"
