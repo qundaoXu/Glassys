@@ -82,7 +82,7 @@ and an NSIS `.exe` on Windows.
 
 **PyInstaller cannot cross-compile.** Each platform's installer has to be built on that
 platform. [.github/workflows/desktop.yml](../.github/workflows/desktop.yml) does this for
-macOS (Apple Silicon and Intel) and Windows; it runs on a `v*` tag or on demand.
+macOS (Apple Silicon) and Windows; it runs on a `v*` tag or on demand.
 
 ## Bundle size
 
@@ -90,7 +90,7 @@ The frozen server is around 330 MB, which dominates the installer. That is the c
 shipping pymatgen's scientific stack: llvmlite alone (which numba needs) is 130 MB, and
 scipy is another 83 MB.
 
-[packaging/prl_server.spec](../packaging/prl_server.spec) excludes matplotlib, plotly,
+[packaging/glassys_server.spec](../packaging/glassys_server.spec) excludes matplotlib, plotly,
 sympy and a few others — roughly 100 MB of pymatgen's transitive dependencies that none of
 the server's code paths actually reach.
 

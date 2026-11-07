@@ -101,7 +101,7 @@ jobs:
           body: |
             Native desktop builds. Download the installer for your platform:
 
-            - macOS (Apple Silicon / Intel) — `.dmg`
+            - macOS (Apple Silicon) — `.dmg`
             - Windows — `.msi` or the NSIS `.exe`
 
             These builds are unsigned. On macOS, right-click the app and choose
