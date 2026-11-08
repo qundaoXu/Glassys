@@ -456,6 +456,29 @@
             >
               The analysis modules are not on PyPI — install from this repository.
             </div>
+            <h3 id="desktop" data-en="Desktop app" data-zh="桌面版">Desktop app</h3>
+            <p
+              data-en="Native installers that need no Python are on the GitHub Releases page: a .dmg for macOS (Apple Silicon), and a .msi or .exe for Windows."
+              data-zh="无需 Python 的原生安装包发布在 GitHub Releases 页面：macOS（Apple Silicon）为 .dmg，Windows 为 .msi 或 .exe。"
+            >
+              Native installers that need no Python are on the GitHub Releases page.
+            </p>
+            <p
+              data-en="On macOS, open the .dmg and drag Glassys into Applications. The app is not signed with an Apple Developer ID, so macOS refuses to open it the first time, saying it is damaged or that Apple cannot verify it. Run this once in Terminal to remove the quarantine flag, then open the app as usual:"
+              data-zh="在 macOS 上，打开 .dmg 并把 Glassys 拖进“应用程序”文件夹。应用没有使用 Apple 开发者 ID 签名，第一次打开时 macOS 会拒绝运行，提示应用“已损坏”或“无法验证开发者”。在“终端”里运行一次下面的命令去掉隔离标记，之后就能正常打开："
+            >
+              On macOS, drag Glassys into Applications, then run this once in Terminal before the
+              first launch:
+            </p>
+<pre><code><span class="c">xattr</span> -cr /Applications/Glassys.app</code></pre>
+            <div
+              class="note"
+              data-en="Run it again after installing a new version. If the app is not in Applications, use its actual path. On Windows, SmartScreen may warn about an unrecognized app: choose More info, then Run anyway."
+              data-zh="每次安装新版本后需要重新运行一次。如果应用不在“应用程序”文件夹，请换成实际路径。在 Windows 上，SmartScreen 可能提示“Windows 已保护你的电脑”：点击“更多信息”，再点击“仍要运行”。"
+            >
+              Run it again after each new version. On Windows, choose More info → Run anyway if
+              SmartScreen warns.
+            </div>
           </section>
 
           <section id="quickstart">

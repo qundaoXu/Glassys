@@ -104,8 +104,8 @@ endpoints against a frozen build before shipping one.
 ## Signing
 
 The builds are unsigned. On macOS that means Gatekeeper will refuse to open the app on a
-machine that did not build it; the user has to right-click and choose Open, or clear the
-quarantine attribute:
+machine that did not build it. Right-click → Open no longer bypasses this on macOS 15 and
+later, so the README tells users to clear the quarantine attribute instead:
 
 ```bash
 xattr -cr "/Applications/Glassys.app"

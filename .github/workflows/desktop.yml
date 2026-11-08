@@ -104,6 +104,13 @@ jobs:
             - macOS (Apple Silicon) — `.dmg`
             - Windows — `.msi` or the NSIS `.exe`
 
-            These builds are unsigned. On macOS, right-click the app and choose
-            **Open** the first time, or clear the quarantine flag with `xattr -cr`
-            on the installed app.
+            These builds are unsigned. On macOS, drag Glassys into Applications,
+            then run this once in Terminal before the first launch (and again after
+            each new version):
+
+            ```shell
+            xattr -cr /Applications/Glassys.app
+            ```
+
+            On Windows, if SmartScreen warns about an unrecognized app, choose
+            **More info**, then **Run anyway**.

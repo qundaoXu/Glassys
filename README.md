@@ -70,6 +70,29 @@ Requirements:
 - macOS, Linux, or Windows
 - Any modern browser
 
+### Desktop app
+
+Native installers that need no Python are on the
+[Releases](https://github.com/qundaoXu/Glassys/releases) page:
+
+- macOS (Apple Silicon): `Glassys_<version>_aarch64.dmg`
+- Windows: `Glassys_<version>_x64_en-US.msi` or `Glassys_<version>_x64-setup.exe`
+
+On macOS, open the `.dmg` and drag Glassys into Applications. The app is not signed with an
+Apple Developer ID, so macOS refuses to open it the first time, saying it is damaged or that
+Apple cannot verify it. Run this once in Terminal to remove the quarantine flag that macOS adds
+to downloaded files, then open the app as usual:
+
+```shell
+xattr -cr /Applications/Glassys.app
+```
+
+Run it again after installing a new version. If you put the app somewhere other than
+Applications, use that path instead.
+
+On Windows, SmartScreen may warn about an unrecognized app. Choose **More info**, then
+**Run anyway**.
+
 ## Quick start
 
 After installation, start the local GUI:

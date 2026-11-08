@@ -68,6 +68,25 @@ uv tool install git+https://github.com/qundaoXu/Glassys.git
 - macOS、Linux 或 Windows
 - 任意现代浏览器
 
+### 桌面版
+
+无需 Python 的原生安装包发布在 [Releases](https://github.com/qundaoXu/Glassys/releases) 页面：
+
+- macOS（Apple Silicon）：`Glassys_<版本号>_aarch64.dmg`
+- Windows：`Glassys_<版本号>_x64_en-US.msi` 或 `Glassys_<版本号>_x64-setup.exe`
+
+在 macOS 上，打开 `.dmg` 并把 Glassys 拖进“应用程序”文件夹。应用没有使用 Apple 开发者 ID
+签名，第一次打开时 macOS 会拒绝运行，提示应用“已损坏”或“无法验证开发者”。在“终端”里运行一次下面的命令，
+去掉 macOS 给下载文件加上的隔离标记，之后就能正常打开：
+
+```shell
+xattr -cr /Applications/Glassys.app
+```
+
+每次安装新版本后需要重新运行一次。如果应用没有放在“应用程序”文件夹，把命令里的路径换成实际位置。
+
+在 Windows 上，SmartScreen 可能提示“Windows 已保护你的电脑”。点击**更多信息**，再点击**仍要运行**。
+
 ## 快速开始
 
 安装后，启动本地图形界面：
