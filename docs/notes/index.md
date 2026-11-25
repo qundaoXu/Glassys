@@ -4,11 +4,6 @@ Focused research notes and implementation references live here. Keep the root do
 
 ## Research Notes
 
-- [3D View Control and Interaction](ChatGPT-3D视角调控与操作.md): research notes on 3D rotation controls, lattice-aware view directions, and crystal-specific camera interaction.
-- [Dynamic Color Assignment](ChatGPT-动态分配颜色方案.md): research notes on element-color semantics, accessible palettes, and dynamic color assignment practices in crystal and molecular viewers.
-- [VESTA Default Orientation Analysis](ChatGPT-VESTA%20默认取向分析.md): research notes on how VESTA chooses the remaining roll/up direction when viewing along lattice axes.
-- [VESTA Standard View Analysis](ChatGPT-VESTA%20standard%20view解析.md): research notes on VESTA-like standard view geometry, including clinographic projection and screen-up construction.
-- [Crystal Visualization Suggestions](ChatGPT-晶体结构可视化建议.md): design notes on default display modes, boundary atoms, and bond representation for crystal structure visualization.
 - [Crystal Toolkit Boundary Report](crystal_toolkit_boundary_report.md): short assessment of Crystal Toolkit's package boundary and whether Glassys should borrow from or depend on it.
 - [Pymatgen Backend Report](pymatgen_prl_report.md): research notes on pymatgen as a possible backend for bonding, coordination environments, and symmetry analysis.
 - [Coordination Polyhedra Rendering Notes](polyhedra_rendering_research.md): research notes on VESTA, pymatgen, and Crystal Toolkit polyhedra practices with implementation guidance for Glassys.
