@@ -36,6 +36,15 @@ desktop = [
     "pyinstaller>=6.11.0",
 ]
 
+# Hatch only reads the root .gitignore, so the Tauri build output (ignored by
+# web/src-tauri/.gitignore) would otherwise end up in the sdist — 0.3.1's was 1 GB.
+[tool.hatch.build.targets.sdist]
+exclude = [
+    "/web/src-tauri/target",
+    "/web/src-tauri/binaries",
+    "/web/src-tauri/gen",
+]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
@@ -44,8 +53,6 @@ pythonpath = ["src"]
 line-length = 100
 target-version = "py312"
 src = ["src", "tests"]
-# Reference notebooks and trajectory sample data live here; not project source.
-extend-exclude = ["structure_analysis_module"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
