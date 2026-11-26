@@ -117,6 +117,102 @@ Direct
     assert structure.composition.reduced_formula == "NaCl"
 
 
+def test_read_lammps_data_atomic_style_guesses_elements_from_masses() -> None:
+    payload = b"""LAMMPS data file via write_data, version 2 Sep 2026, timestep = 0, units = metal
+
+3 atoms
+2 atom types
+
+1.0 6.64 xlo xhi
+-1.0 4.64 ylo yhi
+0.0 5.64 zlo zhi
+
+Masses
+
+1 22.98977
+2 35.453
+
+Atoms # atomic/kk
+
+3 1 3.82 1.82 2.82 0 0 0
+1 1 1.0 -1.0 0.0 0 1 -1
+2 2 3.82 -1.0 0.0 0 0 0
+
+Velocities
+
+1 0 0 0
+2 0 0 0
+3 0 0 0
+"""
+
+    structure = read_structure_bytes(payload, filename="lammps.data")
+
+    assert [site.specie.symbol for site in structure] == ["Na", "Cl", "Na"]
+    assert structure.lattice.abc == pytest.approx((5.64, 5.64, 5.64))
+    assert structure[1].frac_coords == pytest.approx([0.5, 0.0, 0.0])
+    assert structure[2].frac_coords == pytest.approx([0.5, 0.5, 0.5])
+
+
+def test_read_lammps_data_full_style_triclinic_with_type_labels() -> None:
+    payload = b"""triclinic test
+
+2 atoms
+2 atom types
+
+0.0 4.0 xlo xhi
+0.0 4.0 ylo yhi
+0.0 4.0 zlo zhi
+1.0 0.0 0.0 xy xz yz
+
+Atom Type Labels
+
+1 O
+2 Si
+
+Masses
+
+1 15.999
+2 28.085
+
+Atoms # full
+
+1 1 1 -1.2 0.0 0.0 0.0
+2 1 2 2.4 2.5 2.0 2.0
+"""
+
+    structure = read_structure_bytes(payload, filename="silica.lmp")
+
+    assert [site.specie.symbol for site in structure] == ["O", "Si"]
+    assert structure.lattice.matrix[1] == pytest.approx([1.0, 4.0, 0.0])
+    assert structure[1].coords == pytest.approx([2.5, 2.0, 2.0])
+
+
+def test_read_lammps_data_without_style_or_masses_is_sniffed_from_content() -> None:
+    payload = b"""no masses, no style comment
+
+2 atoms
+2 atom types
+
+0 3 xlo xhi
+0 3 ylo yhi
+0 3 zlo zhi
+
+Atoms
+
+1 14 0.0 0.0 0.0
+2 8 1.5 1.5 1.5
+"""
+
+    structure = read_structure_bytes(payload, filename="model")
+
+    assert [site.specie.symbol for site in structure] == ["Si", "O"]
+
+
+def test_invalid_lammps_data_raises_project_error() -> None:
+    with pytest.raises(StructureReadError, match="Could not parse broken.data"):
+        read_structure_bytes(b"title\n\n1 atoms\n", filename="broken.data")
+
+
 def test_invalid_structure_bytes_raise_project_error() -> None:
     with pytest.raises(StructureReadError, match="Could not parse invalid.cif"):
         read_structure_bytes(b"not a structure", filename="invalid.cif")

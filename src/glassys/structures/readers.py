@@ -5,6 +5,8 @@ from tempfile import TemporaryDirectory
 
 from pymatgen.core import Structure
 
+from glassys.structures.lammps_data import looks_like_lammps_data, read_lammps_data
+
 
 class StructureReadError(ValueError):
     """Raised when a structure file cannot be parsed for preview."""
@@ -14,7 +16,11 @@ def read_structure(path: str | Path) -> Structure:
     """Read a periodic crystal structure with pymatgen."""
     structure_path = Path(path)
     try:
-        structure = Structure.from_file(structure_path)
+        payload = structure_path.read_bytes()
+        if looks_like_lammps_data(payload, structure_path.name):
+            structure = read_lammps_data(payload)
+        else:
+            structure = Structure.from_file(structure_path)
     except Exception as exc:
         raise StructureReadError(
             f"Could not parse structure file {structure_path.name}: {exc}"
@@ -30,10 +36,13 @@ def read_structure_bytes(payload: bytes, filename: str | None = None) -> Structu
     display_name = filename or "uploaded structure"
     safe_name = _safe_upload_name(display_name)
     try:
-        with TemporaryDirectory(prefix="glassys-structure-") as temp_dir:
-            structure_path = Path(temp_dir) / safe_name
-            structure_path.write_bytes(payload)
-            structure = Structure.from_file(structure_path)
+        if looks_like_lammps_data(payload, display_name):
+            structure = read_lammps_data(payload)
+        else:
+            with TemporaryDirectory(prefix="glassys-structure-") as temp_dir:
+                structure_path = Path(temp_dir) / safe_name
+                structure_path.write_bytes(payload)
+                structure = Structure.from_file(structure_path)
     except Exception as exc:
         raise StructureReadError(f"Could not parse {display_name}: {exc}") from exc
 

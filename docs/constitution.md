@@ -70,7 +70,7 @@ Glassys keeps a clear backend/frontend boundary. The Python backend owns structu
 
 Responsibilities:
 
-- Read crystal structure files such as CIF and POSCAR.
+- Read crystal structure files such as CIF, POSCAR, and LAMMPS data files.
 - Run materials analysis, including bonding, polyhedra, and symmetry.
 - Convert analyzed structures into scene specifications for the Web app.
 - Serve the local GUI and API.
